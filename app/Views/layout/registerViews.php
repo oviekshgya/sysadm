@@ -46,6 +46,24 @@
 
                 </div>
                 <span id="passwordError" style="color: red; display: none;">Password tidak cocok!</span>
+
+                <div class="input-group mb-3">
+                    <select class="form-control" name="idRole">
+                        <option value="0">=== ACCESS ===</option>
+                        <option value="1">Admin</option>
+                        <option value="2">SubAdmin 1</option>
+                        <option value="2">SubAdmin 2</option>
+                    </select>
+
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <!-- <i class="fa-solid fa-universal-access"></i> -->
+                            <span class="fa-solid fa-universal-access"></span>
+                        </div>
+                    </div>
+
+                </div>
+
                 <div class="row">
                     <!-- <div class="col-8">
                         <div class="icheck-primary">
