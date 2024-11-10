@@ -33,6 +33,7 @@ class Register extends Controller
                 'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
                 "isActive" => 1,
                 "idRole" => $this->request->getPost("idRole"),
+                "idHeaderUser" => $this->request->getPost("idHeaderUser"),
             ];
 
             // Simpan data ke database menggunakan model

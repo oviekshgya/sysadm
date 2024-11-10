@@ -52,12 +52,22 @@
                         <option value="0">=== ACCESS ===</option>
                         <option value="1">Admin</option>
                         <option value="2">SubAdmin 1</option>
-                        <option value="2">SubAdmin 2</option>
                     </select>
 
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <!-- <i class="fa-solid fa-universal-access"></i> -->
+                            <span class="fa-solid fa-universal-access"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <select class="form-control" name="idHeaderUser" id="idHeaderUser">
+                        <option value="0">=== HEADER USER ===</option>
+                    </select>
+
+                    <div class="input-group-append">
+                        <div class="input-group-text">
                             <span class="fa-solid fa-universal-access"></span>
                         </div>
                     </div>
@@ -163,6 +173,36 @@ document.getElementById("email").addEventListener("input", function() {
             .catch(error => console.error('Error:', error));
     } else {
         emailError.style.display = "none";
+    }
+});
+
+document.querySelector("select[name='idRole']").addEventListener("change", function() {
+    var idRole = this.value;
+
+    // Jika idRole bukan 0, ambil data dari server
+    if (idRole !== "0") {
+        fetch(`/get-header-user/${idRole}`, {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                var headerUserSelect = document.getElementById("idHeaderUser");
+
+                // Kosongkan dropdown `HEADER USER` sebelum menambahkan opsi baru
+                headerUserSelect.innerHTML = '<option value="0">=== HEADER USER ===</option>';
+
+                // Loop data hasil response dan tambahkan opsi ke dropdown `HEADER USER`
+                data.forEach(user => {
+                    var option = document.createElement("option");
+                    option.value = user.id;
+                    option.textContent = user.nameUser;
+                    headerUserSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    } else {
+        // Kosongkan dropdown jika `ACCESS` tidak dipilih
+        document.getElementById("idHeaderUser").innerHTML = '<option value="0">=== HEADER USER ===</option>';
     }
 });
 </script>
