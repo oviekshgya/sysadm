@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<?= base_url('plugins/icheck-bootstrap/icheck-bootstrap.min.cs') ?>">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('css/adminlte.min.css') ?>">
+
 </head>
 
 <body class="hold-transition login-page">

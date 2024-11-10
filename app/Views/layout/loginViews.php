@@ -45,5 +45,16 @@
     </div>
 </div>
 <!-- /.login-box -->
+<script>
+<?php if (session()->getFlashdata('success')): ?>
+Swal.fire({
+    icon: 'success',
+    title: 'Sukses',
+    text: '<?= session()->getFlashdata('success') ?>',
+    showConfirmButton: false,
+    timer: 2000
+});
+<?php endif; ?>
+</script>
 
 <?= view('partial/footerLogin') ?>

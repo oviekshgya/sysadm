@@ -8,6 +8,7 @@ class UsersModel extends Model
      * table name
      */
     protected $table = "users";
+    protected $primaryKey = 'id'; // Primary key
 
     /**
      * allowed Field
