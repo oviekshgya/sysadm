@@ -21,6 +21,6 @@ class Users extends Controller
             'pager' => $postModel->pager
         );
 
-        return view('users-index', $data);
+        return view('layout/loginViews', $data);
     }
 }
