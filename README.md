@@ -2,7 +2,8 @@
 
 ## What is CodeIgniter?
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
+CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure. php spark serve --host 0.0.0.0 --port 8080
+
 More information can be found at the [official site](https://codeigniter.com).
 
 This repository holds a composer-installable app starter.
