@@ -53,8 +53,10 @@
                 <div class="input-group mb-3">
                     <select class="form-control" name="idRole">
                         <option value="0">=== ACCESS ===</option>
-                        <option value="0">Admin</option>
-                        <option value="2">SubAdmin</option>
+                        <option value="1">Administrator</option>
+                        <option value="2">Management</option>
+                        <option value="3">Supervisor</option>
+                        <option value="4">Input</option>
                     </select>
 
                     <div class="input-group-append">

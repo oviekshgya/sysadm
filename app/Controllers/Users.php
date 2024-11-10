@@ -43,11 +43,17 @@ class Users extends Controller
         // Inisialisasi model
         $userModel = new UsersModel();
 
-        if ($idRole === "2"){
-            $users = $userModel->where('idRole', 1)->findAll();
+        if ($idRole === "1"){
+            $users = $userModel->where('idRole', 0)->findAll();
+             return $this->response->setJSON($users);
+        }else if ($idRole === "3"){
+             $users = $userModel->where('idRole', 2)->findAll();
+             return $this->response->setJSON($users);
+        }else if ($idRole === '4'){
+            $users = $userModel->where('idRole', 3)->findAll();
              return $this->response->setJSON($users);
         }else{
-             $users = $userModel->where('idRole', $idRole)->findAll();
+            $users = $userModel->where('idRole', 0)->findAll();
              return $this->response->setJSON($users);
         }
 
