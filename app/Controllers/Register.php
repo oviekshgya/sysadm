@@ -38,6 +38,7 @@ class Register extends Controller
             $userModel->save($data);
 
             // Redirect atau beri pesan sukses
+            session()->setFlashdata('success', 'User berhasil ditambahkan!');
             return redirect()->to('/')->with('success', 'User created successfully!');
         } else {
             // Jika validasi gagal, kembalikan ke form dengan pesan error

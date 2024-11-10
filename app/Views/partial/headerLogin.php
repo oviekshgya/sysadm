@@ -17,6 +17,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('css/adminlte.min.css') ?>">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="hold-transition login-page">
