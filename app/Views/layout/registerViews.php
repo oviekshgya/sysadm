@@ -185,6 +185,21 @@ document.querySelector("select[name='idRole']").addEventListener("change", funct
             '<option value="0" disabled>=== HEADER USER ===</option>';
     }
 });
+
+
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+    //e.preventDefault(); // Mencegah form submit langsung
+
+    // Tampilkan SweetAlert loading
+    Swal.fire({
+        title: 'Processing...',
+        text: 'Please wait while we create your account',
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading(); // Tampilkan spinner SweetAlert
+        }
+    });
+});
 </script>
 
 <?= view('partial/footerLogin') ?>
