@@ -46,6 +46,8 @@
 
                 </div>
                 <span id="passwordError" style="color: red; display: none;">Password tidak cocok!</span>
+                <span id="passwordValidationError" style="color: red; display: none;">Password harus minimal 6 karakter,
+                    mengandung huruf besar, huruf kecil, angka, dan simbol.</span>
 
                 <div class="input-group mb-3">
                     <select class="form-control" name="idRole">
@@ -99,10 +101,25 @@ Swal.fire({
 </script>
 
 <script>
+document.getElementById("password").addEventListener("input", function() {
+    var password = this.value;
+    var passwordValidationError = document.getElementById("passwordValidationError");
+
+    // Regex untuk password minimal 6 karakter, mengandung huruf besar, huruf kecil, angka, dan simbol
+    var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+
+    if (!passwordPattern.test(password)) {
+        passwordValidationError.style.display = "inline";
+    } else {
+        passwordValidationError.style.display = "none";
+    }
+});
+
 document.getElementById("registerForm").addEventListener("submit", function(e) {
     // Ambil nilai dari field password dan retypePassword
     var password = document.getElementById("password").value;
     var retypePassword = document.getElementById("retypePassword").value;
+
 
     // Cek apakah password dan retypePassword sama
     if (password !== retypePassword) {
