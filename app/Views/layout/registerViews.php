@@ -54,7 +54,7 @@
                     <select class="form-control" name="idRole">
                         <option value="0">=== ACCESS ===</option>
                         <option value="0">Admin</option>
-                        <option value="1">SubAdmin</option>
+                        <option value="2">SubAdmin</option>
                     </select>
 
                     <div class="input-group-append">
