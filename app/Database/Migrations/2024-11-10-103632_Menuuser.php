@@ -16,7 +16,7 @@ class Menuuser extends Migration
                  'unsigned'       => TRUE,
                  'auto_increment' => TRUE
               ],
-              'idUser'       => [
+              'idRole'       => [
                   'type'           => 'INT',
                   'constraint'     => '11',
               ],
