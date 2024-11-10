@@ -2,7 +2,7 @@
 
 use CodeIgniter\Model;
 
-class PostModel extends Model
+class UsersModel extends Model
 {
     /**
      * table name
@@ -13,7 +13,6 @@ class PostModel extends Model
      * allowed Field
      */
     protected $allowedFields = [
-        'id',
         'nameUser',
         'email',
         'password',
