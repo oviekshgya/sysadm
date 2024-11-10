@@ -31,7 +31,8 @@
                     <input type="password" class="form-control" placeholder="Password" name="password" id="password">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
+                            <!-- <span class="fas fa-lock"></span> -->
+                            <span id="togglePassword" class="fas fa-eye" style="cursor: pointer;"></span>
                         </div>
                     </div>
                 </div>
@@ -40,7 +41,7 @@
 
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
+                            <span id="toggleRetypePassword" class="fas fa-eye" style="cursor: pointer;"></span>
                         </div>
                     </div>
 
@@ -101,6 +102,39 @@ Swal.fire({
 </script>
 
 <script>
+document.getElementById("toggleRetypePassword").addEventListener("click", function() {
+    // Toggle visibility retypePassword
+    var retypePasswordInput = document.getElementById("retypePassword");
+    var toggleIcon = document.getElementById("toggleRetypePassword");
+
+    if (retypePasswordInput.type === "password") {
+        retypePasswordInput.type = "text";
+        toggleIcon.classList.remove("fa-eye");
+        toggleIcon.classList.add("fa-eye-slash");
+    } else {
+        retypePasswordInput.type = "password";
+        toggleIcon.classList.remove("fa-eye-slash");
+        toggleIcon.classList.add("fa-eye");
+    }
+});
+
+document.getElementById("togglePassword").addEventListener("click", function() {
+    // Ambil elemen input password
+    var passwordInput = document.getElementById("password");
+    var toggleIcon = document.getElementById("togglePassword");
+
+    // Toggle tipe input antara 'password' dan 'text'
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.classList.remove("fa-eye");
+        toggleIcon.classList.add("fa-eye-slash"); // Ubah ikon menjadi mata tertutup
+    } else {
+        passwordInput.type = "password";
+        toggleIcon.classList.remove("fa-eye-slash");
+        toggleIcon.classList.add("fa-eye"); // Ubah ikon menjadi mata terbuka
+    }
+});
+
 document.getElementById("password").addEventListener("input", function() {
     var password = this.value;
     var passwordValidationError = document.getElementById("passwordValidationError");
