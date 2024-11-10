@@ -23,4 +23,18 @@ class Users extends Controller
 
         return view('layout/loginViews', $data);
     }
+
+    public function checkEmail()
+    {
+        $email = $this->request->getPost('email');
+
+        $userModel = new UsersModel();
+        $user = $userModel->where('email', $email)->first();
+
+        if ($user) {
+            return $this->response->setJSON(['status' => 'exists']);
+        } else {
+            return $this->response->setJSON(['status' => 'available']);
+        }
+    }
 }

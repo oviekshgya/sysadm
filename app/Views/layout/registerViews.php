@@ -24,7 +24,9 @@
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
+
                 </div>
+                <span id="emailError" style="color: red; display: none;">Email sudah digunakan!</span>
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" placeholder="Password" name="password" id="password">
                     <div class="input-group-append">
@@ -113,6 +115,36 @@ document.getElementById("retypePassword").addEventListener("input", function() {
         document.getElementById("passwordError").style.display = "inline";
     } else {
         document.getElementById("passwordError").style.display = "none";
+    }
+});
+
+document.getElementById("email").addEventListener("input", function() {
+    var email = this.value;
+    var emailError = document.getElementById("emailError");
+
+    if (email.length > 0) {
+        // Kirim permintaan AJAX ke server untuk mengecek email
+        var formData = new FormData();
+        formData.append('email', email);
+
+        fetch('/users/check', {
+                method: 'POST',
+                // headers: {
+                //     'Content-Type': 'application/json',
+                // },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'exists') {
+                    emailError.style.display = "inline";
+                } else {
+                    emailError.style.display = "none";
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    } else {
+        emailError.style.display = "none";
     }
 });
 </script>
