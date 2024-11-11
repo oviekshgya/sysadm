@@ -16,6 +16,8 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
+    public $sessionDriver = 'CodeIgniter\Session\Handlers\DatabaseHandler'; 
+    public $sessionCookieName = 'ci_session';
     public string $baseURL = 'http://192.168.101.17:8080/';
 
     /**

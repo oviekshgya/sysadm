@@ -22,4 +22,9 @@ class UsersModel extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function getUserByEmail($email)
+    {
+        return $this->where('email', $email)->first();
+    }
 }

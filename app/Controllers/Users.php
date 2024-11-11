@@ -56,7 +56,50 @@ class Users extends Controller
             $users = $userModel->where('idRole', 0)->findAll();
              return $this->response->setJSON($users);
         }
+    }
 
-       
+    public function login()
+    {
+        helper(['form', 'url']);
+        
+        $session = session();
+        $model = new UsersModel();
+        
+        // Ambil inputan dari form login
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        
+        // Validasi input
+        if (!$this->validate([
+            'email' => 'required|valid_email',
+            'password' => 'required|min_length[6]'
+        ])) {
+            $session->setFlashdata('error', 'email/password tidak ditemukan!');
+            return redirect()->back();
+        }
+
+        // Cari pengguna berdasarkan email
+        $user = $model->getUserByEmail($email);
+
+        // Jika pengguna ditemukan dan password cocok
+        if ($user && password_verify($password, $user['password'])) {
+            // Simpan data pengguna ke session
+            $session->set('id', $user['id']);
+            $session->set('email', $user['email']);
+            
+            return redirect()->to('/dashboard');
+        } else {
+            $session->setFlashdata('error', 'email/password');
+            return redirect()->back();
+        }
+    }
+
+    public function logout()
+    {
+        $session = session();
+        $session->remove('user_id');
+        $session->remove('username');
+        
+        return redirect()->to('/');
     }
 }
