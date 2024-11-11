@@ -25,6 +25,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'auth' => \App\Filters\AuthMiddleware::class,
+        'alreadyLoggedIn' => \App\Filters\AlreadyLoggedIn::class,
     ];
 
     /**

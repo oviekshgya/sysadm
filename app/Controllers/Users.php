@@ -97,8 +97,8 @@ class Users extends Controller
     public function logout()
     {
         $session = session();
-        $session->remove('user_id');
-        $session->remove('username');
+        $session->remove('id');
+        $session->remove('email');
         
         return redirect()->to('/');
     }

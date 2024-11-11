@@ -18,7 +18,7 @@ class App extends BaseConfig
      */
     public $sessionDriver = 'CodeIgniter\Session\Handlers\DatabaseHandler'; 
     public $sessionCookieName = 'ci_session';
-    public string $baseURL = 'http://192.168.101.17:8080/';
+    public string $baseURL = 'http://localhost:8080/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
