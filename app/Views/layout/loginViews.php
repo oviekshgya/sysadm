@@ -8,7 +8,7 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
 
-            <form action="/login" method="post">
+            <form action="/login" method="post" id="loginForm">
                 <div class="input-group mb-3">
                     <input type="email" class="form-control" placeholder="Email" name="email">
                     <div class="input-group-append">
@@ -64,6 +64,21 @@ Swal.fire({
     timer: 2000
 });
 <?php endif; ?>
+
+
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    //e.preventDefault(); // Mencegah form submit langsung
+
+    // Tampilkan SweetAlert loading
+    Swal.fire({
+        title: 'Processing...',
+        text: 'Please wait while we check your account',
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading(); // Tampilkan spinner SweetAlert
+        }
+    });
+});
 </script>
 
 <?= view('partial/footerLogin') ?>
